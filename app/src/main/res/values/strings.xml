@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TEST20</string>
+
+    <string name="login">登录</string>
+    <string name="login_input_username_hint">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="login_hold_hint">自动登录</string>
+    <string name="login_forget_hint">忘记密码？</string>
+    <string name="login_register_hint">注册</string>
+</resources>
