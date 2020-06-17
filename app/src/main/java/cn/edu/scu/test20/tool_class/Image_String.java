@@ -8,8 +8,9 @@ import android.util.Base64;
 import java.io.ByteArrayOutputStream;
 
 public class Image_String {
+
     /** * 图片转成string *  * @param bitmap * @return */
-    public static String convertIconToString(Bitmap bitmap) {
+    public String convertIconToString(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();// outputstream
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] appicon = baos.toByteArray();// 转为byte数组
@@ -17,7 +18,7 @@ public class Image_String {
     }
 
     /** * string转成bitmap *  * @param st */
-    public static Bitmap convertStringToIcon(String st) {
+    public Bitmap convertStringToIcon(String st) {
         // OutputStream out;
         Bitmap bitmap = null;
         try {

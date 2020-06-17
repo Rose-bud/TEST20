@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.edu.scu.test20.bean.User;
+import cn.edu.scu.test20.tool_class.Image_String;
 
 public class UserActivity extends AppCompatActivity {
     private TextView txtNickName;
@@ -114,14 +117,14 @@ public class UserActivity extends AppCompatActivity {
             String School = (String) BmobUser.getObjectByKey("School");
             String mobilePhoneNumber = (String) BmobUser.getObjectByKey("mobilePhoneNumber");
             String EMail = (String) BmobUser.getObjectByKey("email");
-            File HeadP = (File) BmobUser.getObjectByKey("HeadPic");
+            String HeadP = (String) BmobUser.getObjectByKey("HeadPic");
 
             txtNickName.setText(NickName);
             txtStudentID.setText(StudentID);
             txtSchool.setText(School);
             txtPhone.setText(mobilePhoneNumber);
             txtEMail.setText(EMail);
-
+            setIamge(HeadP);
         } else {
             Toast.makeText(UserActivity.this,"尚未登录，请先登录",Toast.LENGTH_LONG).show();
         }
@@ -233,6 +236,7 @@ public class UserActivity extends AppCompatActivity {
 
         if (requestCode == PHOTO_CROP_CODE && resultCode == Activity.RESULT_OK && data != null) {
             showImage(path);
+            sendImage(path);
         }
 
     }
@@ -250,6 +254,32 @@ public class UserActivity extends AppCompatActivity {
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         HeadPic.setImageBitmap(bm);
     }
+    //上传图片
+    private void sendImage(String imaePath){
+        final User user = BmobUser.getCurrentUser(User.class);
+        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+        Image_String image_string=new Image_String();
+        String data=image_string.convertIconToString(bm);
+        user.setHeadPic(data);
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    Toast.makeText(UserActivity.this,"更新头像成功",Toast.LENGTH_LONG).show();
+                    getMessage();
+                } else {
+                    Toast.makeText(UserActivity.this,"更新头像失败",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+    private void setIamge(String data){
+        Image_String image_string=new Image_String();
+        Bitmap photo=image_string.convertStringToIcon(data);
+        Drawable drawable = new BitmapDrawable(photo);
+        HeadPic.setImageDrawable(drawable);
+    }
+
 
     private void photoClip(Uri uri) {
         // 调用系统中自带的图片剪裁
