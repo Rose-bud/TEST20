@@ -225,9 +225,8 @@ public class UserActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+    //获取图片路径
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        //获取图片路径
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PIC_CODE && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
@@ -240,9 +239,8 @@ public class UserActivity extends AppCompatActivity {
         }
 
     }
-
+    //调用相册
     void choose_photo_layout_click() {
-        //调用相册
         Intent intent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, SELECT_PIC_CODE);
@@ -273,13 +271,13 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
+    //处理得到的头像数据并设置
     private void setIamge(String data){
         Image_String image_string=new Image_String();
         Bitmap photo=image_string.convertStringToIcon(data);
         Drawable drawable = new BitmapDrawable(photo);
         HeadPic.setImageDrawable(drawable);
     }
-
 
     private void photoClip(Uri uri) {
         // 调用系统中自带的图片剪裁
