@@ -7,7 +7,7 @@ public class User extends BmobUser {
 
     private String NickName;
     private String School;
-    private BmobFile HeadPic;
+    private String HeadPic;
     private Integer Point;
 
     public String getNickName() {
@@ -22,10 +22,10 @@ public class User extends BmobUser {
     public void setSchool(String School) {
         this.School = School;
     }
-    public BmobFile getHeadPic() {
+    public String getHeadPic() {
         return HeadPic;
     }
-    public void setHeadPic(BmobFile HeadPic) {
+    public void setHeadPic(String HeadPic) {
         this.HeadPic = HeadPic;
     }
     public Integer getPoint() {

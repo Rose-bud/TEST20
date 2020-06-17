@@ -16,7 +16,6 @@ public class Image_String {
         return Base64.encodeToString(appicon, Base64.DEFAULT);
     }
 
-
     /** * string转成bitmap *  * @param st */
     public static Bitmap convertStringToIcon(String st) {
         // OutputStream out;
@@ -30,21 +29,6 @@ public class Image_String {
             return bitmap;
         } catch (Exception e) { return null; } }
 
-        /**缩放图像**/
-    public static Bitmap zoomImg(Bitmap bm, int newWidth ,int newHeight){
-        // 获得图片的宽高
-        int width = bm.getWidth();
-        int height = bm.getHeight();
-        // 计算缩放比例
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-        // 取得想要缩放的matrix参数
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-        // 得到新的图片
-        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
-        return newbm;
-    }
 /**图像放入ImageView的方法**/
 //    Bitmap photo=convertStringToIcon(preferences.getString("photo", "无法获取"));//将图片从String类型转换成Bitmap
 //    Drawable drawable = new BitmapDrawable(photo);
