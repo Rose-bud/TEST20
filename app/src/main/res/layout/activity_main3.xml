@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="exam.MainActivity3">
+
+    <TextView
+        android:id="@+id/tv_main_start_test1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="450dp"
+        android:text="入党积极分子测试试题第一套"
+        android:textColor="@color/account_pressed_true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_main_start_test2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="390dp"
+        android:text="入党积极分子测试试题第二套"
+        android:textColor="@color/account_pressed_true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_main_start_test3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="330dp"
+        android:text="入党积极分子测试试题第三套"
+        android:textColor="@color/account_pressed_true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_main_start_test4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="270dp"
+        android:text="入党积极分子测试试题第四套"
+        android:textColor="@color/account_pressed_true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_main_start_test5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="210dp"
+        android:text="入党积极分子测试试题第五套"
+        android:textColor="@color/account_pressed_true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_main_start_test6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:text="入党积极分子测试试题第六套"
+        android:textColor="@color/account_pressed_true"
+        android:textSize="16sp" />
+</RelativeLayout>
