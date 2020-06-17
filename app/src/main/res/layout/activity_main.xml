@@ -21,6 +21,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="45sp"
+            android:textColor="@android:color/white"
             tools:text="高校党建" />
 
         <LinearLayout

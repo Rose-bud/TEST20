@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,10 +20,12 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.edu.scu.test20.bean.User;
 
 public class MainActivity extends AppCompatActivity {
+    private int RememberFlag = 0;
     private EditText edtUserName;
     private EditText edtPassword;
     private Button bntLogin;
     private Button bntR;
+    private CheckBox rememberBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,17 @@ public class MainActivity extends AppCompatActivity {
         edtUserName=findViewById(R.id.et_login_username);
         bntLogin=findViewById(R.id.bt_login_submit);
         bntR=findViewById(R.id.bt_login_register);
+        rememberBox=findViewById(R.id.cb_remember_login);
+        rememberBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    RememberFlag=1;
+                }else{
+                    RememberFlag=0;
+                }
+            }
+        });
         bntR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /*判定是否已经登录*/
+//        if(RememberFlag==1){
+//        }
         if (BmobUser.isLogin()) {
             User user = BmobUser.getCurrentUser(User.class);
             Intent intent = new Intent();

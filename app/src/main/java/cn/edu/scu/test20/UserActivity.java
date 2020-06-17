@@ -2,12 +2,19 @@ package cn.edu.scu.test20;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -34,13 +41,20 @@ public class UserActivity extends AppCompatActivity {
     private Button bnt_c_Message;
     private Button bnt_quit;
     private ImageView HeadPic;
+    private String path = "/sdcard/file.jpg";
+    private File mFile;
+    private Uri mUri;
+    //使用相册中的图片
+    public static final int SELECT_PIC_CODE = 1;
+    //图片裁剪
+    private static final int PHOTO_CROP_CODE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         Bmob.initialize(this, "56a832cf0b1a430d9eada88f2c39a39a");//绑定后端
-        /*绑定控件*/
+        /**绑定控件 初始化**/
         txtNickName=findViewById(R.id.txt_NickName);
         txtStudentID=findViewById(R.id.txt_studentID);
         txtEMail=findViewById(R.id.txt_mail);
@@ -50,6 +64,8 @@ public class UserActivity extends AppCompatActivity {
         bnt_c_Password=findViewById(R.id.bnt_ChangePassWord);
         bnt_quit=findViewById(R.id.bnt_quit);
         HeadPic=findViewById(R.id.HeadPic1);
+        mFile = new File(path);
+        mUri = Uri.fromFile(mFile);
 
         getMessage();
 
@@ -72,6 +88,20 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updatePassword();
+            }
+        });
+        HeadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT>=23){
+                    if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},0x100);
+                    }else {
+                        choose_photo_layout_click();
+                    }
+                }else {
+                    choose_photo_layout_click();
+                }
             }
         });
     }
@@ -190,5 +220,51 @@ public class UserActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        //获取图片路径
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PIC_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            photoClip(selectedImage);
+        }
+
+        if (requestCode == PHOTO_CROP_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            showImage(path);
+        }
+
+    }
+
+    void choose_photo_layout_click() {
+        //调用相册
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, SELECT_PIC_CODE);
+    }
+
+    //加载图片
+    private void showImage(String imaePath){
+        System.out.println("拍照图片地址："+imaePath);
+        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+        HeadPic.setImageBitmap(bm);
+    }
+
+    private void photoClip(Uri uri) {
+        // 调用系统中自带的图片剪裁
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        intent.setDataAndType(uri, "image/*");
+        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
+        intent.putExtra("crop", "true");
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 9998);
+        intent.putExtra("aspectY", 9999);
+        // outputX outputY 是裁剪图片宽高
+        intent.putExtra("outputX", 160);
+        intent.putExtra("outputY", 160);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,mUri);
+        startActivityForResult(intent, PHOTO_CROP_CODE);
     }
 }
