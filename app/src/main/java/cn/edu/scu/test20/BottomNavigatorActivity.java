@@ -176,15 +176,15 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         intent.putExtra("name",getIntent().getStringExtra("name"));
         mViews.add(getView("QualityActivity1",intent));
 
-        intent.setClass(this, MainActivity3.class);
-        intent.putExtra("id",2);
-        intent.putExtra("name",getIntent().getStringExtra("name"));
-        intent.putExtra("student",utype);
-        mViews.add(getView("QualityActivity2",intent));
-
-        intent.setClass(this, LittleVideoActivity.class);
-        intent.putExtra("id",3);
-        mViews.add(getView("QualityActivity3",intent));
+//        intent.setClass(this, MainActivity3.class);
+//        intent.putExtra("id",2);
+//        intent.putExtra("name",getIntent().getStringExtra("name"));
+//        intent.putExtra("student",utype);
+//        mViews.add(getView("QualityActivity2",intent));
+//
+//        intent.setClass(this, LittleVideoActivity.class);
+//        intent.putExtra("id",3);
+//        mViews.add(getView("QualityActivity3",intent));
 
 
         viewPageAdapter=new MyViewPageAdapter(mViews);

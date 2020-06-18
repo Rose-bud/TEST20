@@ -53,10 +53,9 @@ public class PageContentActivity extends AppCompatActivity {
         setContentView(R.layout.page_content_activity);
         final Intent intent=getIntent();
 
-        final String interest=intent.getStringExtra(FRUIT_INTEREST);
-        String content=intent.getStringExtra(FRUIT_CONTENT);
-        String fruitName1=intent.getStringExtra(FRUIT_NAME);
-        int fruitImageId=intent.getIntExtra(FRUIT_IMAGE_ID,0);
+        String content=intent.getStringExtra("news_content");
+        String fruitName1=intent.getStringExtra("news_abstract");
+        int fruitImageId=intent.getIntExtra("news_imageId",0);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         ImageView fruitImageView=(ImageView)findViewById(R.id.fruit_image_view);
@@ -72,17 +71,6 @@ public class PageContentActivity extends AppCompatActivity {
         Glide.with(this).load(fruitImageId).into(fruitImageView);
         String fruitContent=generateFuitContent(content);
         fruitContentText.setText(fruitContent);
-
-
-
-
-        final int newsId=intent.getIntExtra(NEWS_ID,0);
-        final Context context=this;
-
-
-
-
-
 
     }
 
