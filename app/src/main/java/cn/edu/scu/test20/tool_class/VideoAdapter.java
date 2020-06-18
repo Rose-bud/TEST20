@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import cn.edu.scu.test20.LittleVideoActivity;
 import cn.edu.scu.test20.R;
@@ -16,12 +17,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>
 {
     private ArrayList list;
     private LittleVideoActivity context;
-    private String url;
 
-    public VideoAdapter(LittleVideoActivity context, ArrayList list,String url){
+    public VideoAdapter(LittleVideoActivity context, ArrayList list){
         this.list=list;
         this.context=context;
-        this.url=url;
     }
 
     @NonNull
@@ -34,10 +33,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull final VideoAdapter.ViewHolder holder, int position) {
-
-        holder.jcVideoPlayerStandard.setUp(url,holder.jcVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"视频标题");
+        final HashMap map=(HashMap)list.get(position);
+        String url = map.get("video_url").toString();
+        String title = map.get("video_title").toString();
+        holder.jcVideoPlayerStandard.setUp(url,holder.jcVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"title");
         //holder.jcVideoPlayerStandard.thumbImageView.setImageBitmap();//设置封面图
-
     }
 
     @Override
