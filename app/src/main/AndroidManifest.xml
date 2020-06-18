@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BottomNavigatorActivity"></activity>
+        <activity android:name=".LittleVideoActivity"></activity>
         <activity android:name=".UserActivity" />
 
         <provider
@@ -24,21 +24,14 @@
             android:authorities="cn.edu.scu.test20.BmobContentProvider" />
 
         <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".exam.ExamActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".exam.MainActivity3"></activity>
-        <activity android:name=".exam.TestResultActivity"></activity>
-
-
+        <activity android:name=".BottomNavigatorActivity"/>
+        <activity android:name=".MainPageActivity"/>
     </application>
 
 </manifest>

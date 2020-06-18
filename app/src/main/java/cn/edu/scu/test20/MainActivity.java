@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"登录成功",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent();
 //                    intent.setClass(MainActivity.this,UserActivity.class);
-                    intent.setClass(MainActivity.this, BottomNavigatorActivity.class);
+                    intent.setClass(MainActivity.this, LittleVideoActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this,"登录失败",Toast.LENGTH_LONG).show();

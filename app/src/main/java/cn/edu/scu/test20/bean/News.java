@@ -1,7 +1,6 @@
 package cn.edu.scu.test20.bean;
 
 import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.datatype.BmobFile;
 
 public class News extends BmobObject {
     private Integer NewsID;
