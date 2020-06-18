@@ -36,6 +36,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>
         final HashMap map=(HashMap)list.get(position);
         String url = map.get("video_url").toString();
         String title = map.get("video_title").toString();
+        holder.TextItem.setText(title);
         holder.jcVideoPlayerStandard.setUp(url,holder.jcVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
         //holder.jcVideoPlayerStandard.thumbImageView.setImageBitmap();//设置封面图
     }
