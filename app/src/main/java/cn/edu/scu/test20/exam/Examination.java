@@ -1,9 +1,5 @@
 package cn.edu.scu.test20.exam;
 
-/**
- * Created by 86130 on 2019/8/3.
- */
-
 public class Examination {
     private boolean isTrue;
     private String question;

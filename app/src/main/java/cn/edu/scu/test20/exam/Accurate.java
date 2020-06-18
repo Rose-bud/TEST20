@@ -1,8 +1,5 @@
 package cn.edu.scu.test20.exam;
 
-/**
- * Created by 86130 on 2020/3/27.
- */
 
 public class Accurate {
     String studentName;

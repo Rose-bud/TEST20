@@ -54,10 +54,10 @@ public class ResultGridAdapter extends RecyclerView.Adapter<ResultGridAdapter.Vi
         isSelected=selected[position];
         Log.e("Adapter",isSelected+"");
         if(isSelected){
-            viewHolder1.tvResult.setBackgroundResource(R.layout.bg_result_selected);
+            viewHolder1.tvResult.setBackgroundResource(R.drawable.bg_result_selected);
 
         }else{
-            viewHolder1.tvResult.setBackgroundResource(R.layout.bg_result_normal);
+            viewHolder1.tvResult.setBackgroundResource(R.drawable.bg_result_normal);
         }
     }
 
