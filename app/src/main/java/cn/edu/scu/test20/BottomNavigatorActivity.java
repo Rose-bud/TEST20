@@ -181,9 +181,9 @@ public class BottomNavigatorActivity extends AppCompatActivity {
 //        intent.putExtra("student",utype);
 //        mViews.add(getView("QualityActivity2",intent));
 
-//        intent.setClass(this, LittleVideoActivity.class);
-//        intent.putExtra("id",3);
-//        mViews.add(getView("QualityActivity3",intent));
+        intent.setClass(this, LittleVideoActivity.class);
+        intent.putExtra("id",3);
+        mViews.add(getView("QualityActivity3",intent));
 
         intent.setClass(this, UserActivity.class);
         intent.putExtra("id",3);
