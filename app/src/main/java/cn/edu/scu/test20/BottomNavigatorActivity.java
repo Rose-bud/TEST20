@@ -1,4 +1,4 @@
-package cn.edu.scu.test20.tool_class;
+package cn.edu.scu.test20;
 
 import android.app.LocalActivityManager;
 import android.content.Intent;
@@ -22,11 +22,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.edu.scu.test20.LittleVideoActivity;
-import cn.edu.scu.test20.MainPageActivity;
-import cn.edu.scu.test20.R;
-import cn.edu.scu.test20.UserActivity;
 import cn.edu.scu.test20.exam.MainActivity3;
+import cn.edu.scu.test20.tool_class.MyViewPageAdapter;
 
 
 public class BottomNavigatorActivity extends AppCompatActivity {
