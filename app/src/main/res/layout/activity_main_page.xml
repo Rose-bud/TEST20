@@ -51,7 +51,7 @@
             <include
                 android:id="@+id/imgshow"
                 layout="@layout/activity_imageshow"
-                android:layout_width="412dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
