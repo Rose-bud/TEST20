@@ -13,15 +13,10 @@ import android.widget.Toast;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.LogInListener;
-import cn.edu.scu.test20.bean.TEST;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.edu.scu.test20.bean.User;
-import cn.edu.scu.test20.tool_class.BottomNavigatorActivity;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private int RememberFlag = 0;
@@ -79,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /*判定是否已经登录*/
-//        if(RememberFlag==1){
-//        }
+        if(RememberFlag==1){
+        }
         if (BmobUser.isLogin()) {
             User user = BmobUser.getCurrentUser(User.class);
             Intent intent = new Intent();
@@ -113,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null) {
                     Toast.makeText(MainActivity.this,"登录成功",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent();
-                    intent.setClass(MainActivity.this,UserActivity.class);
-//                    intent.setClass(MainActivity.this, BottomNavigatorActivity.class);
+//                    intent.setClass(MainActivity.this,UserActivity.class);
+                    intent.setClass(MainActivity.this, BottomNavigatorActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this,"登录失败",Toast.LENGTH_LONG).show();
