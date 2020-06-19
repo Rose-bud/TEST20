@@ -1,4 +1,4 @@
-package cn.edu.scu.test20;
+package cn.edu.scu.test20.tool_class;
 
 import android.app.LocalActivityManager;
 import android.content.Intent;
@@ -22,6 +22,11 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.scu.test20.LittleVideoActivity;
+import cn.edu.scu.test20.MainPageActivity;
+import cn.edu.scu.test20.R;
+import cn.edu.scu.test20.UserActivity;
+import cn.edu.scu.test20.exam.MainActivity3;
 import cn.edu.scu.test20.tool_class.MyViewPageAdapter;
 
 
@@ -119,7 +124,7 @@ public class BottomNavigatorActivity extends AppCompatActivity {
     }
     private void initPager(){
         pageChangeListener=new ViewPager.OnPageChangeListener() {
-            @Override
+
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
@@ -167,7 +172,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
 
     }
     private void addActivityToViewPager(){
-        String utype=getIntent().getStringExtra("utype");
         List<View> mViews=new ArrayList<View>();
         Intent intent=new Intent();
 
@@ -176,15 +180,20 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         intent.putExtra("name",getIntent().getStringExtra("name"));
         mViews.add(getView("QualityActivity1",intent));
 
-//        intent.setClass(this, MainActivity3.class);
-//        intent.putExtra("id",2);
+        //change by sc,6/19
+        intent.setClass(this, MainActivity3.class);
+        intent.putExtra("id",2);
 //        intent.putExtra("name",getIntent().getStringExtra("name"));
 //        intent.putExtra("student",utype);
-//        mViews.add(getView("QualityActivity2",intent));
-//
-//        intent.setClass(this, LittleVideoActivity.class);
-//        intent.putExtra("id",3);
-//        mViews.add(getView("QualityActivity3",intent));
+        mViews.add(getView("QualityActivity2",intent));
+
+        intent.setClass(this, LittleVideoActivity.class);
+        intent.putExtra("id",3);
+        mViews.add(getView("QualityActivity3",intent));
+
+        intent.setClass(this, UserActivity.class);
+        intent.putExtra("id",4);
+        mViews.add(getView("QualityActivity4",intent));
 
 
         viewPageAdapter=new MyViewPageAdapter(mViews);

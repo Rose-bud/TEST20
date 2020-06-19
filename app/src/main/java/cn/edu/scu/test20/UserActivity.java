@@ -40,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
     private TextView txtSchool;
     private TextView txtEMail;
     private TextView txtPhone;
+    private TextView txtPoint;
     private Button bnt_c_Password;
     private Button bnt_c_Message;
     private Button bnt_quit;
@@ -63,6 +64,7 @@ public class UserActivity extends AppCompatActivity {
         txtEMail=findViewById(R.id.txt_mail);
         txtPhone=findViewById(R.id.txt_phone);
         txtSchool=findViewById(R.id.txt_school);
+        txtPoint=findViewById(R.id.txt_point);
         bnt_c_Message=findViewById(R.id.bnt_ChangeMessage);
         bnt_c_Password=findViewById(R.id.bnt_ChangePassWord);
         bnt_quit=findViewById(R.id.bnt_quit);
@@ -118,12 +120,14 @@ public class UserActivity extends AppCompatActivity {
             String mobilePhoneNumber = (String) BmobUser.getObjectByKey("mobilePhoneNumber");
             String EMail = (String) BmobUser.getObjectByKey("email");
             String HeadP = (String) BmobUser.getObjectByKey("HeadPic");
+            //String Point = (String) BmobUser.getObjectByKey("Point");
 
             txtNickName.setText(NickName);
             txtStudentID.setText(StudentID);
             txtSchool.setText(School);
             txtPhone.setText(mobilePhoneNumber);
             txtEMail.setText(EMail);
+            //txtPoint.setText(Point);
             setIamge(HeadP);
         } else {
             Toast.makeText(UserActivity.this,"尚未登录，请先登录",Toast.LENGTH_LONG).show();

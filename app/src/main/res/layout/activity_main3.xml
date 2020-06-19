@@ -5,6 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_main1"
     tools:context="exam.MainActivity3">
 
     <TextView
@@ -14,8 +15,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="450dp"
+        android:background="@drawable/bg_rouned_rect_green"
         android:text="入党积极分子测试试题第一套"
-        android:textColor="@color/account_pressed_true"
+        android:textColor="@color/selector_white_to_black"
         android:textSize="16sp" />
 
     <TextView
@@ -25,8 +27,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="390dp"
+        android:background="@drawable/bg_rouned_rect_green"
         android:text="入党积极分子测试试题第二套"
-        android:textColor="@color/account_pressed_true"
+        android:textColor="@color/selector_white_to_black"
         android:textSize="16sp" />
 
     <TextView
@@ -36,8 +39,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="330dp"
+        android:background="@drawable/bg_rouned_rect_green"
         android:text="入党积极分子测试试题第三套"
-        android:textColor="@color/account_pressed_true"
+        android:textColor="@color/selector_white_to_black"
         android:textSize="16sp" />
 
     <TextView
@@ -47,8 +51,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="270dp"
+        android:background="@drawable/bg_rouned_rect_green"
         android:text="入党积极分子测试试题第四套"
-        android:textColor="@color/account_pressed_true"
+        android:textColor="@color/selector_white_to_black"
         android:textSize="16sp" />
 
     <TextView
@@ -58,8 +63,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="210dp"
+        android:background="@drawable/bg_rouned_rect_green"
         android:text="入党积极分子测试试题第五套"
-        android:textColor="@color/account_pressed_true"
+        android:textColor="@color/selector_white_to_black"
         android:textSize="16sp" />
 
     <TextView
@@ -69,7 +75,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="150dp"
+        android:background="@drawable/bg_rouned_rect_green"
         android:text="入党积极分子测试试题第六套"
-        android:textColor="@color/account_pressed_true"
+        android:textColor="@color/selector_white_to_black"
         android:textSize="16sp" />
 </RelativeLayout>
