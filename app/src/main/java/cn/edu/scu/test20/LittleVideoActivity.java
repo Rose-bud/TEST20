@@ -46,7 +46,7 @@ public class LittleVideoActivity extends AppCompatActivity {
     }
 
     private void getVideoList(){
-        String bql="select Title,Url from Video";
+        String bql="select Title,Url,ImageUrl from Video";
         list = new ArrayList();
         BmobQuery<Video> bmobQuery = new BmobQuery<Video>();
         bmobQuery.setSQL(bql);
@@ -60,6 +60,7 @@ public class LittleVideoActivity extends AppCompatActivity {
                             HashMap map=new HashMap();
                             map.put("video_title",v_list.get(count).getTitle());
                             map.put("video_url",v_list.get(count).getUrl());
+                            map.put("Image_url",v_list.get(count).getImageUrl());
                             list.add(map);
                         }
                         videoAdapter=new VideoAdapter(LittleVideoActivity.this,list);

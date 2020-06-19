@@ -5,6 +5,7 @@ import cn.bmob.v3.BmobObject;
 public class Video extends BmobObject {
     private Integer VideoID;
     private String Url;
+    private String ImageUrl;
     private String Title;
     private String Type;
 
@@ -19,5 +20,8 @@ public class Video extends BmobObject {
     }
     public String getType() {
         return Type;
+    }
+    public String getImageUrl() {
+        return ImageUrl;
     }
 }

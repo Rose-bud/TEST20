@@ -1,11 +1,15 @@
 package cn.edu.scu.test20.tool_class;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -38,7 +42,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>
         String title = map.get("video_title").toString();
         holder.TextItem.setText(title);
         holder.jcVideoPlayerStandard.setUp(url,holder.jcVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-        //holder.jcVideoPlayerStandard.thumbImageView.setImageBitmap();//设置封面图
+        if(map.get("Image_url")!=null){
+            String Urltmp=map.get("Image_url").toString();
+            if(Urltmp.length()>0){
+                Uri ImUrl = Uri.parse(Urltmp);
+                holder.jcVideoPlayerStandard.thumbImageView.setImageURI(ImUrl);//设置封面图
+            }
+        }
     }
 
     @Override

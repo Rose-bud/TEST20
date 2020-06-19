@@ -17,6 +17,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.edu.scu.test20.bean.User;
+import cn.edu.scu.test20.tool_class.BottomNavigatorActivity;
 
 public class MainActivity extends AppCompatActivity {
     private int RememberFlag = 0;
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         final User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        user.setPoint(0);
         user.signUp(new SaveListener<User>() {
             @Override
             public void done(User user, BmobException e) {
