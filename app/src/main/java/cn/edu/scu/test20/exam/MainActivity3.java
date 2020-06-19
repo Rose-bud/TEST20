@@ -30,7 +30,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity3.this,ExamActivity.class);
+                Intent intent = new Intent(MainActivity3.this, ExamActivity.class);
                 intent.putExtra("testId",1);
                 startActivity(intent);
             }
@@ -39,7 +39,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity3.this,ExamActivity.class);
+                Intent intent = new Intent(MainActivity3.this, ExamActivity.class);
                 intent.putExtra("testId",2);
                 startActivity(intent);
             }
@@ -47,7 +47,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity3.this,ExamActivity.class);
+                Intent intent = new Intent(MainActivity3.this, ExamActivity.class);
                 intent.putExtra("testId",3);
                 startActivity(intent);
             }
@@ -55,7 +55,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity3.this,ExamActivity.class);
+                Intent intent = new Intent(MainActivity3.this, ExamActivity.class);
                 intent.putExtra("testId",4);
                 startActivity(intent);
             }
@@ -63,7 +63,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity3.this,ExamActivity.class);
+                Intent intent = new Intent(MainActivity3.this, ExamActivity.class);
                 intent.putExtra("testId",5);
                 startActivity(intent);
             }
@@ -71,7 +71,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity3.this,ExamActivity.class);
+                Intent intent = new Intent(MainActivity3.this, ExamActivity.class);
                 intent.putExtra("testId",6);
                 startActivity(intent);
             }

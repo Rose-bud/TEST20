@@ -18,6 +18,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.edu.scu.test20.bean.User;
+import cn.edu.scu.test20.tool_class.BottomNavigatorActivity;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         if (BmobUser.isLogin()) {
             User user = BmobUser.getCurrentUser(User.class);
             Intent intent = new Intent();
-            intent.setClass(MainActivity.this,BottomNavigatorActivity.class);
+            intent.setClass(MainActivity.this, BottomNavigatorActivity.class);
             startActivity(intent);
             Toast.makeText(MainActivity.this,"已登录",Toast.LENGTH_LONG).show();
         } else {

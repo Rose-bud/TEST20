@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import cn.edu.scu.test20.BottomNavigatorActivity;
 import cn.edu.scu.test20.R;
 
 public class TestResultActivity extends AppCompatActivity {

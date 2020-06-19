@@ -430,7 +430,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                 flagArr[currentIndex]=flag;
                 Log.e("ExamActivity",flagArr[currentIndex]+"");
                 if(currentIndex==questons.length-1){
-                    Intent intent=new Intent(ExamActivity.this,TestResultActivity.class);
+                    Intent intent=new Intent(ExamActivity.this, TestResultActivity.class);
                     intent.putExtra("totalNum",questons.length);
                     intent.putExtra("flag",flagArr);
                     startActivityForResult(intent,REQUEST_CODE_RESULT);
