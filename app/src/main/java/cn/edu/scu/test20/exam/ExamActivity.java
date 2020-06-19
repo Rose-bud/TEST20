@@ -15,10 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import cn.edu.scu.test20.R;
 
-/**
- * Created by 86130 on 2019/8/3.
- */
-
 public class ExamActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG="ExamActivity";
     private static final String KET_INDEX="index";

@@ -12,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import cn.edu.scu.test20.R;
 
-/**
- * Created by 86130 on 2019/8/3.
- */
 
 public class ResultGridAdapter extends RecyclerView.Adapter<ResultGridAdapter.ViewHolder1>{
     private Context context;

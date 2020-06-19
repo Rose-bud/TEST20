@@ -11,17 +11,18 @@
         android:id="@+id/lay_login_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@mipmap/bg_login1"
         android:orientation="vertical"
         android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="146dp"
+            android:layout_height="189dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="45sp"
             android:textColor="@android:color/white"
+            android:textSize="45sp"
             tools:text="高校党建" />
 
         <LinearLayout
@@ -67,7 +68,7 @@
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
                 android:textColor="#14b94d"
-                android:textColorHint="#FAFBFA"
+                android:textColorHint="#F7F8FA"
                 android:textCursorDrawable="@null"
                 android:textSize="@dimen/font_16" />
 
@@ -122,7 +123,7 @@
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
                 android:textColor="#14b94d"
-                android:textColorHint="#FBFBFB"
+                android:textColorHint="#F7F8FA"
                 android:textCursorDrawable="@null"
                 android:textSize="@dimen/font_16" />
 
