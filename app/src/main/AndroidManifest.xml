@@ -35,7 +35,7 @@
         <activity android:name=".exam.TestResultActivity"/>
         <activity android:name=".LittleVideoActivity"/>
         <activity android:name=".UserActivity" />
-
+        <activity android:name=".tool_class.BottomNavigatorActivity" />
         <activity android:name=".MainPageActivity"/>
 
     </application>
