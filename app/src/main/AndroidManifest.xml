@@ -29,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".tool_class.BottomNavigatorActivity"/>
 
         <activity android:name=".exam.MainActivity3"/>
         <activity android:name=".exam.ExamActivity"/>
