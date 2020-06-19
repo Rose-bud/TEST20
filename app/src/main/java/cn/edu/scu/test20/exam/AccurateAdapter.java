@@ -14,9 +14,6 @@ import cn.edu.scu.test20.R;
 import java.util.List;
 
 
-/**
- * Created by 86130 on 2020/3/27.
- */
 
 public class AccurateAdapter extends RecyclerView.Adapter<AccurateAdapter.ViewHolder>{
     private Context mContext;
