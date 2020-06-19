@@ -230,7 +230,7 @@ public class UserActivity extends AppCompatActivity {
     }
 
     //获取图片路径
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PIC_CODE && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();

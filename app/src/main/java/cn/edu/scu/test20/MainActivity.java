@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void done(User user, BmobException e) {
                 if (e == null) {
                     Toast.makeText(MainActivity.this,"注册成功",Toast.LENGTH_LONG).show();
+                    loginByAccount(username,password);
                 } else {
                     Toast.makeText(MainActivity.this,"注册失败",Toast.LENGTH_LONG).show();
                 }

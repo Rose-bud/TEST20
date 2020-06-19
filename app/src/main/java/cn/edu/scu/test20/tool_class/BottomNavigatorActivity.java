@@ -72,12 +72,12 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         toolbar=(Toolbar)findViewById(R.id.toobar1);
         mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 
-        setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.u51);
-        }
+//        setSupportActionBar(toolbar);
+//        ActionBar actionBar=getSupportActionBar();
+//        if(actionBar!=null){
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setHomeAsUpIndicator(R.drawable.u51);
+//        }
         NavigationView navView=(NavigationView)findViewById(R.id.nav_view);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
             @Override
