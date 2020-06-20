@@ -48,16 +48,16 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         initView(savedInstanceState);
 
     }
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.toolbar,menu);
-        return true;
-    }
+//    public boolean onCreateOptionsMenu(Menu menu){
+//        getMenuInflater().inflate(R.menu.toolbar,menu);
+//        return true;
+//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.settings:
-                Toast.makeText(this,"Settings", Toast.LENGTH_SHORT).show();
-                break;
+//            case R.id.settings:
+//                Toast.makeText(this,"Settings", Toast.LENGTH_SHORT).show();
+//                break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
