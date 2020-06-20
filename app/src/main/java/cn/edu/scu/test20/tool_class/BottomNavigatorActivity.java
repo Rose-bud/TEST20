@@ -93,6 +93,10 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         questionBankLayout = findViewById(R.id.questionbankLayout);
         videoLayout = findViewById(R.id.videoLayout);
         infoLayout = findViewById(R.id.infoLayout);
+        img1 = findViewById(R.id.main_img1);
+        img2 = findViewById(R.id.main_img2);
+        img3 = findViewById(R.id.main_img3);
+        img4 = findViewById(R.id.main_img4);
         clickListener=new View.OnClickListener() {
             @Override
             public void onClick(View view) {
