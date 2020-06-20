@@ -24,7 +24,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +49,7 @@
                         android:id="@+id/bnt_test1"
                         android:layout_width="60dp"
                         android:layout_height="28dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_light"
                         android:text="测试"
                         android:textColor="@color/selector_white_to_black"
@@ -61,8 +61,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="50dp">
+                android:layout_height="110dp"
+                android:layout_marginTop="45dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                         android:id="@+id/bnt_test2"
                         android:layout_width="60dp"
                         android:layout_height="28dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_light"
                         android:text="测试"
                         android:textColor="@color/selector_white_to_black"
@@ -98,8 +98,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="50dp">
+                android:layout_height="110dp"
+                android:layout_marginTop="45dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -123,7 +123,7 @@
                         android:id="@+id/bnt_test3"
                         android:layout_width="60dp"
                         android:layout_height="28dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_light"
                         android:text="测试"
                         android:textColor="@color/selector_white_to_black"
@@ -144,7 +144,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -169,7 +169,7 @@
                         android:id="@+id/bnt_test4"
                         android:layout_width="60dp"
                         android:layout_height="28dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_light"
                         android:text="测试"
                         android:textColor="@color/selector_white_to_black"
@@ -181,7 +181,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="50dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -206,7 +206,7 @@
                         android:id="@+id/bnt_test5"
                         android:layout_width="60dp"
                         android:layout_height="28dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_light"
                         android:text="测试"
                         android:textColor="@color/selector_white_to_black"
@@ -218,7 +218,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="50dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -243,7 +243,7 @@
                         android:id="@+id/bnt_test6"
                         android:layout_width="60dp"
                         android:layout_height="28dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/holo_red_light"
                         android:text="测试"
                         android:textColor="@color/selector_white_to_black"
