@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         final User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        user.setPoint(0);
         user.signUp(new SaveListener<User>() {
             @Override
             public void done(User user, BmobException e) {

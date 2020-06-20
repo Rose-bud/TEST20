@@ -136,25 +136,25 @@ public class BottomNavigatorActivity extends AppCompatActivity {
                         img1.setImageResource(R.drawable.tab01_sel);
                         img2.setImageResource(R.drawable.tab02_unsel);
                         img3.setImageResource(R.drawable.tab03_unsel);
-                        img4.setImageResource(R.drawable.tab05_unsel);
+                        img4.setImageResource(R.drawable.tab05_my);
                         break;
                     case 1:
                         img1.setImageResource(R.drawable.tab01_unsel);
                         img2.setImageResource(R.drawable.tab02_sel);
                         img3.setImageResource(R.drawable.tab03_unsel);
-                        img4.setImageResource(R.drawable.tab05_unsel);
+                        img4.setImageResource(R.drawable.tab05_my);
                         break;
                     case 2:
                         img1.setImageResource(R.drawable.tab01_unsel);
                         img2.setImageResource(R.drawable.tab02_unsel);
                         img3.setImageResource(R.drawable.tab03_sel);
-                        img4.setImageResource(R.drawable.tab05_unsel);
+                        img4.setImageResource(R.drawable.tab05_my);
                         break;
                     case 3:
                         img1.setImageResource(R.drawable.tab01_unsel);
                         img2.setImageResource(R.drawable.tab02_unsel);
                         img3.setImageResource(R.drawable.tab03_unsel);
-                        img4.setImageResource(R.drawable.tab05_sel);
+                        img4.setImageResource(R.drawable.tab05_my);
                         break;
                 }
 

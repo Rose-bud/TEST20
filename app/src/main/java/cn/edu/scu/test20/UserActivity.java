@@ -120,14 +120,14 @@ public class UserActivity extends AppCompatActivity {
             String mobilePhoneNumber = (String) BmobUser.getObjectByKey("mobilePhoneNumber");
             String EMail = (String) BmobUser.getObjectByKey("email");
             String HeadP = (String) BmobUser.getObjectByKey("HeadPic");
-            //String Point = (String) BmobUser.getObjectByKey("Point");
+            String Point = BmobUser.getObjectByKey("Point").toString();
 
             txtNickName.setText(NickName);
             txtStudentID.setText(StudentID);
             txtSchool.setText(School);
             txtPhone.setText(mobilePhoneNumber);
             txtEMail.setText(EMail);
-            //txtPoint.setText(Point);
+            txtPoint.setText(Point);
             setIamge(HeadP);
         } else {
             Toast.makeText(UserActivity.this,"尚未登录，请先登录",Toast.LENGTH_LONG).show();
