@@ -1,8 +1,13 @@
 package cn.edu.scu.test20.tool_class;
 
+import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,13 +26,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.edu.scu.test20.LittleVideoActivity;
 import cn.edu.scu.test20.MainPageActivity;
 import cn.edu.scu.test20.R;
 import cn.edu.scu.test20.UserActivity;
+import cn.edu.scu.test20.bean.User;
 import cn.edu.scu.test20.exam.MainActivity3;
 import cn.edu.scu.test20.tool_class.MyViewPageAdapter;
 
@@ -41,14 +53,24 @@ public class BottomNavigatorActivity extends AppCompatActivity {
     private ViewPager.OnPageChangeListener pageChangeListener;
     private DrawerLayout mDrawerLayout;
     private LinearLayout homepageLayout, questionBankLayout, videoLayout, infoLayout;
-    Toolbar toolbar;
+    //使用相册中的图片
+    public static final int SELECT_PIC_CODE = 1;
+    //图片裁剪
+    private static final int PHOTO_CROP_CODE = 2;
+    private String path = "/sdcard/file.jpg";
+    private File mFile;
+    private Uri mUri;
+    final User user = BmobUser.getCurrentUser(User.class);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_navigator_activity);
         initView(savedInstanceState);
-
+        mFile = new File(path);
+        mUri = Uri.fromFile(mFile);
+        Bmob.initialize(this, "56a832cf0b1a430d9eada88f2c39a39a");//绑定后端
     }
 //    public boolean onCreateOptionsMenu(Menu menu){
 //        getMenuInflater().inflate(R.menu.toolbar,menu);
@@ -196,11 +218,60 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         intent.putExtra("id",4);
         mViews.add(getView("QualityActivity4",intent));
 
-
         viewPageAdapter=new MyViewPageAdapter(mViews);
         vp.setAdapter(viewPageAdapter);
     }
     private View getView(String id, Intent intent){
         return manager.startActivity(id,intent).getDecorView();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PIC_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            photoClip(selectedImage);
+        }
+
+        if (requestCode == PHOTO_CROP_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            Activity curActivity = manager.getActivity("QualityActivity4");
+            ((UserActivity)curActivity).showImage(path);
+            sendImage(path);
+        }
+    }
+
+    private void photoClip(Uri uri) {
+        // 调用系统中自带的图片剪裁
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        intent.setDataAndType(uri, "image/*");
+        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
+        intent.putExtra("crop", "true");
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 9998);
+        intent.putExtra("aspectY", 9999);
+        // outputX outputY 是裁剪图片宽高
+        intent.putExtra("outputX", 160);
+        intent.putExtra("outputY", 160);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,mUri);
+        startActivityForResult(intent, PHOTO_CROP_CODE);
+    }
+
+    //上传图片
+    private void sendImage(String imaePath){
+        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+        Image_String image_string=new Image_String();
+        String data=image_string.convertIconToString(bm);
+        user.setHeadPic(data);
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    Toast.makeText(BottomNavigatorActivity.this,"更新头像成功",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(BottomNavigatorActivity.this,"更新头像失败",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }
