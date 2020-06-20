@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class BottomNavigatorActivity extends AppCompatActivity {
     private View.OnClickListener clickListener;
     private ViewPager.OnPageChangeListener pageChangeListener;
     private DrawerLayout mDrawerLayout;
+    private LinearLayout homepageLayout, questionBankLayout, videoLayout, infoLayout;
     Toolbar toolbar;
 
     @Override
@@ -69,15 +71,10 @@ public class BottomNavigatorActivity extends AppCompatActivity {
 
 
     private void initView(Bundle savedInstanceState){
-        toolbar=(Toolbar)findViewById(R.id.toobar1);
         mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 
-//        setSupportActionBar(toolbar);
-//        ActionBar actionBar=getSupportActionBar();
-//        if(actionBar!=null){
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//            actionBar.setHomeAsUpIndicator(R.drawable.u51);
-//        }
+
+
         NavigationView navView=(NavigationView)findViewById(R.id.nav_view);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -92,34 +89,34 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         manager.dispatchCreate(savedInstanceState);
 
         vp=(ViewPager)findViewById(R.id.viewpager);
-        img1=(ImageView)findViewById(R.id.main_img1);
-        img2=(ImageView)findViewById(R.id.main_img2);
-        img3=(ImageView)findViewById(R.id.main_img3);
-        img4=(ImageView)findViewById(R.id.main_img4);
+        homepageLayout = findViewById(R.id.homepageLayout);
+        questionBankLayout = findViewById(R.id.questionbankLayout);
+        videoLayout = findViewById(R.id.videoLayout);
+        infoLayout = findViewById(R.id.infoLayout);
         clickListener=new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()){
-                    case R.id.main_img1:
+                    case R.id.homepageLayout:
                         vp.setCurrentItem(0);
                         break;
-                    case R.id.main_img2:
+                    case R.id.questionbankLayout:
                         vp.setCurrentItem(1);
                         break;
-                    case R.id.main_img3:
+                    case R.id.videoLayout:
                         vp.setCurrentItem(2);
                         break;
-                    case R.id.main_img4:
+                    case R.id.infoLayout:
                         vp.setCurrentItem(3);
                         break;
 
                 }
             }
         };
-        img1.setOnClickListener(clickListener);
-        img2.setOnClickListener(clickListener);
-        img3.setOnClickListener(clickListener);
-        img4.setOnClickListener(clickListener);
+        homepageLayout.setOnClickListener(clickListener);
+        questionBankLayout.setOnClickListener(clickListener);
+        videoLayout.setOnClickListener(clickListener);
+        infoLayout.setOnClickListener(clickListener);
         initPager();
     }
     private void initPager(){

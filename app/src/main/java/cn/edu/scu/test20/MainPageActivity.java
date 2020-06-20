@@ -1,5 +1,6 @@
 package cn.edu.scu.test20;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -33,8 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-
-
+import cn.edu.scu.test20.bean.Contents;
 
 
 public class MainPageActivity extends AppCompatActivity{
@@ -86,7 +86,13 @@ public class MainPageActivity extends AppCompatActivity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                HashMap map = (HashMap)newsList.get(position);
+                Intent intent = new Intent(MainPageActivity.this, PageContentActivity.class);
+                intent.putExtra("news_title", (String)map.get("title"));
+                intent.putExtra("news_abstract", (String)map.get("abstract"));
+                intent.putExtra("news_imageId", (int)map.get("imageSrc"));
+                intent.putExtra("news_content", Contents.contents[position]);
+                startActivity(intent);
             }
         });
         RefreshLayout refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);

@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".UserActivity" />
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
@@ -30,14 +30,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".tool_class.BottomNavigatorActivity"/>
-
         <activity android:name=".exam.MainActivity3"/>
         <activity android:name=".exam.ExamActivity"/>
         <activity android:name=".exam.TestResultActivity"/>
         <activity android:name=".LittleVideoActivity"/>
-        <activity android:name=".UserActivity" />
-        <activity android:name=".MainPageActivity"/>
+        <activity android:name=".MainPageActivity">
 
+        </activity>
+        <activity android:name=".PageContentActivity"></activity>
     </application>
 
 </manifest>

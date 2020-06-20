@@ -37,6 +37,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/homepageLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -56,6 +57,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/questionbankLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -75,6 +77,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/videoLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -95,6 +98,7 @@
 
 
         <LinearLayout
+            android:id="@+id/infoLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
