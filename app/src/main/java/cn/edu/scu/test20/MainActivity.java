@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void loginByAccount(String username,String password) {//登录方法
+        Log.d("login", "this");
         BmobUser.loginByAccount(username, password, new LogInListener<User>() {
             @Override
             public void done(User user, BmobException e) {
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setClass(MainActivity.this, BottomNavigatorActivity.class);
                     startActivity(intent);
                 } else {
+                    Log.d("login", "error:" + e.getMessage());
                     Toast.makeText(MainActivity.this,"登录失败",Toast.LENGTH_LONG).show();
                 }
             }
