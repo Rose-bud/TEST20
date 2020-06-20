@@ -67,8 +67,8 @@ public class MainPageActivity extends AppCompatActivity{
 
         setContentView(R.layout.activity_main_page);
 
-        Toolbar toolbar=(Toolbar) findViewById(R.id.toobar1);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar=(Toolbar) findViewById(R.id.);
+//        setSupportActionBar(toolbar);
 
         //imgshow=findViewById(R.id.imgshow);//左滑菜单
 

@@ -1,5 +1,6 @@
 package cn.edu.scu.test20;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,11 @@ import cn.bmob.v3.listener.SQLQueryListener;
 import cn.edu.scu.test20.bean.User;
 import cn.edu.scu.test20.bean.Video;
 import cn.edu.scu.test20.tool_class.VideoAdapter;
+
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 public class LittleVideoActivity extends AppCompatActivity {
 
@@ -43,6 +49,22 @@ public class LittleVideoActivity extends AppCompatActivity {
                 getVideoList();
             }
         }.start();
+
+        RefreshLayout refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout_video);
+        refreshLayout.setRefreshHeader(new ClassicsHeader(this));
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        getVideoList();
+                    }
+                }.start();
+                refreshLayout.finishRefresh(2000);
+            }
+        });
     }
 
     private void getVideoList(){
