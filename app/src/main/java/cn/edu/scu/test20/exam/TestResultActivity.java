@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import cn.edu.scu.test20.MainPageActivity;
 import cn.edu.scu.test20.R;
+import cn.edu.scu.test20.tool_class.BottomNavigatorActivity;
 
 public class TestResultActivity extends AppCompatActivity {
     private RecyclerView rvResultList;
@@ -67,6 +69,15 @@ public class TestResultActivity extends AppCompatActivity {
         }
         rvResultList=(RecyclerView)findViewById(R.id.rv_result_list);
         tvBack=(TextView)findViewById(R.id.tv_result_back);
+        ///////
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TestResultActivity.this, BottomNavigatorActivity.class);
+
+                startActivity(intent);
+            }
+        });
         ///////
         RecyclerView.LayoutManager manager = new GridLayoutManager(this, 5);
         rvResultList.setLayoutManager(manager);
