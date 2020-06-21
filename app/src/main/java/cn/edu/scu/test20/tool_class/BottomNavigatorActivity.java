@@ -84,21 +84,7 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         return true;
     }
 
-
     private void initView(Bundle savedInstanceState){
-        mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
-
-
-
-        NavigationView navView=(NavigationView)findViewById(R.id.nav_view);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mDrawerLayout.closeDrawers();
-                return true;
-            }
-        });
-
 
         manager= new LocalActivityManager(this,true);
         manager.dispatchCreate(savedInstanceState);
@@ -173,7 +159,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
                         img4.setImageResource(R.drawable.tab05_my);
                         break;
                 }
-
             }
 
             @Override
