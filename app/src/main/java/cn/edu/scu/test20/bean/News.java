@@ -8,7 +8,7 @@ public class News extends BmobObject {
     private String Abstract;
     private String Title;
     private String Type;
-    private Integer ImageID;
+    private String imageSrc;
 
     public Integer getNewsID() {
         return NewsID;
@@ -16,7 +16,7 @@ public class News extends BmobObject {
     public String getContent() {
         return Content;
     }
-    public String Abstract() {
+    public String getAbstract() {
         return Abstract;
     }
     public String getTitle() {
@@ -25,8 +25,8 @@ public class News extends BmobObject {
     public String getType() {
         return Type;
     }
-    public Integer getImageID() {
-        return ImageID;
+    public String getimageSrc() {
+        return imageSrc;
     }
 
 }

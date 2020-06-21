@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,13 +30,21 @@ import android.widget.Toast;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.edu.scu.test20.bean.Contents;
+import cn.edu.scu.test20.bean.News;
+import cn.edu.scu.test20.tool_class.NewsAdapter;
 
 
 public class MainPageActivity extends AppCompatActivity{
@@ -53,7 +63,8 @@ public class MainPageActivity extends AppCompatActivity{
     private LinearLayout ll_point_container;
     private String[] contentDescs;
     private TextView tv_desc;
-
+    private ListView listView;
+    private NewsAdapter adapter;
     boolean isRunning=false;
 
 
@@ -62,27 +73,22 @@ public class MainPageActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // startActivity(new Intent(MainActivity2.this,ImageShowActivity.class));
-
         setContentView(R.layout.activity_main_page);
-
-        Toolbar toolbar=(Toolbar) findViewById(R.id.toobar1);
-        setSupportActionBar(toolbar);
-
         //imgshow=findViewById(R.id.imgshow);//左滑菜单
+        preProcess();
+        Log.d("getNews", "main");
+        getNews();
+        //img
+        initViews();
+        initData();
+        initAdapter();
 
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
 
-        }
+    }
 
-        initNews();
-        ListView listView=(ListView)findViewById(R.id.newsListView);
-
-        SimpleAdapter adapter = new SimpleAdapter(this, newsList, R.layout.item_news, new String[]{"title", "imageSrc", "abstract"}, new int[]{R.id.textTitle, R.id.imageNews, R.id.textAbstract});
-        listView.setAdapter(adapter);
+    private void preProcess(){
+        Bmob.initialize(this, "56a832cf0b1a430d9eada88f2c39a39a");//绑定Bmob后端
+        listView=(ListView)findViewById(R.id.newsListView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -90,8 +96,8 @@ public class MainPageActivity extends AppCompatActivity{
                 Intent intent = new Intent(MainPageActivity.this, PageContentActivity.class);
                 intent.putExtra("news_title", (String)map.get("title"));
                 intent.putExtra("news_abstract", (String)map.get("abstract"));
-                intent.putExtra("news_imageId", (int)map.get("imageSrc"));
-                intent.putExtra("news_content", Contents.contents[position]);
+                intent.putExtra("news_imageId", (String)map.get("imageSrc"));
+                intent.putExtra("news_content", (String)map.get("content"));
                 startActivity(intent);
             }
         });
@@ -101,66 +107,21 @@ public class MainPageActivity extends AppCompatActivity{
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh(2000);
+                newsList.clear();
+                getNews();
+                refreshLayout.finishRefresh(true);
+
             }
         });
-
-
-        //img
-        initViews();
-        initData();
-        initAdapter();
-//        new Thread(){
-//            public void run(){
-//               okHttp.sendRequestWithOkHttp("http://118.25.139.202:8080/Android/servlet/GetNewsServlet?messageId=4",1);
-//                isRunning=true;
-//                while(isRunning){
-//                    try{
-//                        Thread.sleep(4000);
-//                    }catch (InterruptedException e){
-//                        e.printStackTrace();
-//                    }
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            //System.out.println("设置当前位置: " + viewPager.getCurrentItem());
-//                            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-//                        }
-//                    });
-//                }
-//            }
-//        }.start();
-
-
-
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                loadMore();
+                refreshLayout.finishLoadMore(true);
+            }
+        });
     }
 
-
-
-    private void   initNews(){
-        HashMap map = new HashMap();
-        map.put("title", "从中央政治局会议看中国经济走势");
-        map.put("imageSrc", R.drawable.t1);
-        map.put("abstract", "新华社北京7月30日电 题：乘风破浪 行稳致远——从中央政治局会议看中国经济走势");
-        newsList.add(map);
-        HashMap map1 = new HashMap();
-        map1.put("title", "中共中央政治局召开会议 中共中央总书记习近平主持会议");
-        map1.put("imageSrc", R.drawable.t2);
-        map1.put("abstract", "中共中央政治局召开会议分析研究当前经济形势和经济工作审议《中国共产党问责条例》和《关于十九届中央第三轮巡视情况的综合报告》");
-        newsList.add(map1);
-        HashMap map2 = new HashMap();
-        map2.put("title", "努力办好人民群众满意的基础教育");
-        map2.put("imageSrc", R.drawable.t3);
-        map2.put("abstract", "李克强就基础教育改革发展作出重要批示强调着力在提高质量、促进公平上下功夫 努力办好人民群众满意的基础教育");
-        newsList.add(map2);
-        HashMap map3 = new HashMap();
-        map3.put("title", "推动消防执法全方位深层次变革--国新办召开新闻发布会");
-        map3.put("imageSrc", R.drawable.t4);
-        map3.put("abstract", "【来自国新办新闻发布会的报道】光明日报记者 彭景晖 姚亚奇 光明日报通讯员 徐礼涵 \n");
-        newsList.add(map3);
-
-
-    }
 
 
 
@@ -204,21 +165,12 @@ public class MainPageActivity extends AppCompatActivity{
         };
         imageViewList=new ArrayList<ImageView>();
 
-//        View pointView;
-//        LinearLayout.LayoutParams layoutParams;
         for(int i=0;i<imageResIds.length;i++){
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(imageResIds[i]);
 
             imageViewList.add(imageView);
 
-//            pointView=new View(this);
-//            pointView.setBackgroundResource(R.drawable.point);
-//            layoutParams=new LinearLayout.LayoutParams(5,5);
-//            if(i!=0)
-//                layoutParams.leftMargin=10;
-//            pointView.setEnabled(false);
-//            ll_point_container.addView(pointView,layoutParams);
         }
     }
     private void initAdapter(){
@@ -255,6 +207,80 @@ public class MainPageActivity extends AppCompatActivity{
             container.removeView(imageViewList.get(position));
         }
 
+    }
+
+    private void getNews(){
+        Log.d("getNews", "hello");
+        newsList = new ArrayList<News>();
+        BmobQuery<News> query = new BmobQuery<News>();
+        query.setLimit(5);
+        query.order("-createdAt");
+        query.findObjects(new FindListener<News>() {
+            @Override
+            public void done(List<News> list, BmobException e) {
+                if(e == null){
+
+                    for(News item: list){
+                        HashMap map = new HashMap();
+                        map.put("title", item.getTitle());
+
+                        if(item.getimageSrc() == null){
+                            map.put("imageSrc", "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1592705543&di=55d6867a8fdce326f50c3b9627f14219&src=http://www.zhufu.pro/updoc/allimg/15022822296-www.zhufu.pro-15022R25242.jpg");
+                        } else {
+                            map.put("imageSrc", item.getimageSrc());
+                        }
+                        map.put("abstract", item.getAbstract());
+                        map.put("content", item.getContent());
+                        newsList.add(map);
+                    }
+                    //这里添加前端代码
+
+                    adapter = new NewsAdapter(MainPageActivity.this, newsList);
+                    listView.setAdapter(adapter);
+
+                }else {
+                    Log.i("getNews", e.getMessage() + "," + e.getErrorCode());
+                }
+
+            }
+        });
+
+    }
+
+    private void loadMore(){
+        int count = newsList.size();
+        BmobQuery<News> query = new BmobQuery<News>();
+        query.setSkip(count);
+        query.setLimit(5);
+        query.order("-createdAt");
+        query.findObjects(new FindListener<News>() {
+            @Override
+            public void done(List<News> list, BmobException e) {
+                if (e == null) {
+                    ArrayList tempList = new ArrayList();
+                    for (News item : list) {
+                        HashMap map = new HashMap();
+                        map.put("title", item.getTitle());
+
+                        if (item.getimageSrc() == null) {
+                            map.put("imageSrc", "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1592705543&di=55d6867a8fdce326f50c3b9627f14219&src=http://www.zhufu.pro/updoc/allimg/15022822296-www.zhufu.pro-15022R25242.jpg");
+                        } else {
+                            map.put("imageSrc", item.getimageSrc());
+                        }
+                        map.put("abstract", item.getAbstract());
+                        map.put("content", item.getContent());
+                        tempList.add(map);
+                    }
+                    newsList.addAll(tempList);
+                    adapter.notifyDataSetChanged();
+
+
+                } else {
+                    Log.i("getNews", e.getMessage() + "," + e.getErrorCode());
+                }
+
+            }
+        });
     }
 
 }

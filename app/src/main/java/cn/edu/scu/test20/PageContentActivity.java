@@ -55,7 +55,7 @@ public class PageContentActivity extends AppCompatActivity {
 
         String content=intent.getStringExtra("news_content");
         String fruitName1=intent.getStringExtra("news_abstract");
-        int fruitImageId=intent.getIntExtra("news_imageId",0);
+        String newImageId=intent.getStringExtra("news_imageId");
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         ImageView fruitImageView=(ImageView)findViewById(R.id.fruit_image_view);
@@ -68,7 +68,7 @@ public class PageContentActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         collapsingToolbarLayout.setTitle(fruitName1);
-        Glide.with(this).load(fruitImageId).into(fruitImageView);
+        Glide.with(this).load(newImageId).into(fruitImageView);
         String fruitContent=generateFuitContent(content);
         fruitContentText.setText(fruitContent);
 
