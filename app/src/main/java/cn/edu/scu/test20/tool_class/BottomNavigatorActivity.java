@@ -51,7 +51,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
     private MyViewPageAdapter viewPageAdapter;
     private View.OnClickListener clickListener;
     private ViewPager.OnPageChangeListener pageChangeListener;
-    private DrawerLayout mDrawerLayout;
     private LinearLayout homepageLayout, questionBankLayout, videoLayout, infoLayout;
     //使用相册中的图片
     public static final int SELECT_PIC_CODE = 1;
@@ -71,17 +70,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         mFile = new File(path);
         mUri = Uri.fromFile(mFile);
         Bmob.initialize(this, "56a832cf0b1a430d9eada88f2c39a39a");//绑定后端
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                break;
-            default:
-
-        }
-        return true;
     }
 
     private void initView(Bundle savedInstanceState){
