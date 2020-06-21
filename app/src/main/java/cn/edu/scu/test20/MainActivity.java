@@ -1,8 +1,12 @@
 package cn.edu.scu.test20;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bntR;
     private CheckBox rememberBox;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this,"已登录",Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(MainActivity.this,"未登录",Toast.LENGTH_LONG).show();
+        }
+        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},0x100);
         }
     }
     private void SignUp(String username,String password){//注册方法

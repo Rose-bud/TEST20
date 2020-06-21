@@ -1,11 +1,11 @@
 package cn.edu.scu.test20;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -230,73 +230,56 @@ public class UserActivity extends AppCompatActivity {
     }
 
     //获取图片路径
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SELECT_PIC_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            Uri selectedImage = data.getData();
-            photoClip(selectedImage);
-        }
-
-        if (requestCode == PHOTO_CROP_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            showImage(path);
-            sendImage(path);
-        }
-
-    }
-    //调用相册
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == SELECT_PIC_CODE && resultCode == Activity.RESULT_OK && data != null) {
+//            Uri selectedImage = data.getData();
+//            photoClip(selectedImage);
+//        }
+//
+//        if (requestCode == PHOTO_CROP_CODE && resultCode == Activity.RESULT_OK && data != null) {
+//            showImage(path);
+//            sendImage(path);
+//        }
+//
+//    }
+//    //调用相册
     void choose_photo_layout_click() {
         Intent intent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, SELECT_PIC_CODE);
+        getParent().startActivityForResult(intent, SELECT_PIC_CODE);
     }
 
     //加载图片
-    private void showImage(String imaePath){
+    public void showImage(String imaePath){
         System.out.println("拍照图片地址："+imaePath);
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         HeadPic.setImageBitmap(bm);
     }
     //上传图片
-    private void sendImage(String imaePath){
-        final User user = BmobUser.getCurrentUser(User.class);
-        Bitmap bm = BitmapFactory.decodeFile(imaePath);
-        Image_String image_string=new Image_String();
-        String data=image_string.convertIconToString(bm);
-        user.setHeadPic(data);
-        user.update(new UpdateListener() {
-            @Override
-            public void done(BmobException e) {
-                if (e == null) {
-                    Toast.makeText(UserActivity.this,"更新头像成功",Toast.LENGTH_LONG).show();
-                    getMessage();
-                } else {
-                    Toast.makeText(UserActivity.this,"更新头像失败",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
+//    private void sendImage(String imaePath){
+//        final User user = BmobUser.getCurrentUser(User.class);
+//        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+//        Image_String image_string=new Image_String();
+//        String data=image_string.convertIconToString(bm);
+//        user.setHeadPic(data);
+//        user.update(new UpdateListener() {
+//            @Override
+//            public void done(BmobException e) {
+//                if (e == null) {
+//                    Toast.makeText(UserActivity.this,"更新头像成功",Toast.LENGTH_LONG).show();
+//                    getMessage();
+//                } else {
+//                    Toast.makeText(UserActivity.this,"更新头像失败",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+//    }
     //处理得到的头像数据并设置
     private void setIamge(String data){
         Image_String image_string=new Image_String();
         Bitmap photo=image_string.convertStringToIcon(data);
         Drawable drawable = new BitmapDrawable(photo);
         HeadPic.setImageDrawable(drawable);
-    }
-
-    private void photoClip(Uri uri) {
-        // 调用系统中自带的图片剪裁
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        intent.setDataAndType(uri, "image/*");
-        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
-        intent.putExtra("crop", "true");
-        // aspectX aspectY 是宽高的比例
-        intent.putExtra("aspectX", 9998);
-        intent.putExtra("aspectY", 9999);
-        // outputX outputY 是裁剪图片宽高
-        intent.putExtra("outputX", 160);
-        intent.putExtra("outputY", 160);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT,mUri);
-        startActivityForResult(intent, PHOTO_CROP_CODE);
     }
 }
