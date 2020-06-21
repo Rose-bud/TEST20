@@ -72,16 +72,9 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         mUri = Uri.fromFile(mFile);
         Bmob.initialize(this, "56a832cf0b1a430d9eada88f2c39a39a");//绑定后端
     }
-//    public boolean onCreateOptionsMenu(Menu menu){
-//        getMenuInflater().inflate(R.menu.toolbar,menu);
-//        return true;
-//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-//            case R.id.settings:
-//                Toast.makeText(this,"Settings", Toast.LENGTH_SHORT).show();
-//                break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
@@ -206,8 +199,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         //change by sc,6/19
         intent.setClass(this, MainActivity3.class);
         intent.putExtra("id",2);
-//        intent.putExtra("name",getIntent().getStringExtra("name"));
-//        intent.putExtra("student",utype);
         mViews.add(getView("QualityActivity2",intent));
 
         intent.setClass(this, LittleVideoActivity.class);
