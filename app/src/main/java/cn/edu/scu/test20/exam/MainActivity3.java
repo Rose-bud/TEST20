@@ -28,6 +28,7 @@ public class MainActivity3 extends AppCompatActivity {
         tvStartExam4= (Button) findViewById(R.id.bnt_test4);
         tvStartExam5= (Button) findViewById(R.id.bnt_test5);
         tvStartExam6= (Button) findViewById(R.id.bnt_test6);
+        //为每一个按钮设置监听器
         tvStartExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,12 +78,10 @@ public class MainActivity3 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
+  //  @Override
+//    public void onBackPressed() {
+//        finish();
+//    }
 }

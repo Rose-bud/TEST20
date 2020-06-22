@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
 
 import cn.edu.scu.test20.R;
@@ -18,38 +17,38 @@ public class ResultGridAdapter extends RecyclerView.Adapter<ResultGridAdapter.Vi
     private boolean[] selected;
     private boolean isSelected=false;
     private int list=0;;
-    OnRecyclerItemClickListener onRecyclerItemClickListener;
+    //OnRecyclerItemClickListener onRecyclerItemClickListener;
     public ResultGridAdapter(Context context, int list, boolean[] selected, OnRecyclerItemClickListener onRecyclerItemClickListener){
         this.context = context;
         this.list = list;
         this.selected = selected;
-        this.onRecyclerItemClickListener = onRecyclerItemClickListener;
+        //this.onRecyclerItemClickListener = onRecyclerItemClickListener;
     }
 
-    @Override
+    @Override //创建ViewHolder实例
     public ViewHolder1 onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view= LayoutInflater.from(context).inflate(R.layout.recycler_grid_item,parent,false);
-        view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                if(onRecyclerItemClickListener!=null){
-                    onRecyclerItemClickListener.onTtemClick(view,(int)view.getTag());
-
-                }
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                if(onRecyclerItemClickListener!=null){
+//                    onRecyclerItemClickListener.onTtemClick(view,(int)view.getTag());
+//
+//                }
+//            }
+//        });
         return  new ViewHolder1(view);
     }
 
     @SuppressLint("ResourceType")
-    @Override
+    @Override //对RecyclerView子项的数据进行赋值,结果正确为绿圈，结果错误为红圈
     public void onBindViewHolder(ViewHolder1 holder, int position) {
         ViewHolder1 viewHolder1=holder;
         viewHolder1.itemView.setTag(position);
         viewHolder1.tvResult.setText(String.valueOf(position+1));
 
         isSelected=selected[position];
-        Log.e("Adapter",isSelected+"");
+        //Log.e("Adapter",isSelected+"");
         if(isSelected){
             viewHolder1.tvResult.setBackgroundResource(R.drawable.bg_result_selected);
 
@@ -59,7 +58,7 @@ public class ResultGridAdapter extends RecyclerView.Adapter<ResultGridAdapter.Vi
     }
 
 
-    @Override
+    @Override  //子项数目
     public int getItemCount() {
         return list;
     }

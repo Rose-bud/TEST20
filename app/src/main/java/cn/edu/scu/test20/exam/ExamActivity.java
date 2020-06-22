@@ -20,15 +20,15 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     private static final String KET_INDEX="index";
     private static final int REQUEST_CODE_RESULT=0;
 
-    private TextView tvExit;
-    private TextView tvQue;
+    private TextView tvExit;  //退出测试
+    private TextView tvQue;   //
     private RadioGroup rgOption;
     private RadioButton rbOptionl,rbOption2, rbOption3, rbOption4;
     private TextView tvPre;
     private TextView tvNext;
     private TextView tvAnswer;
     private String answer;
-    private Examination[] questons=new Examination[]{
+    private Examination[] questions=new Examination[]{
             new Examination("1.中国共产党和各民主党派共同协商、管理国家事务的合作方式主要包括(  )等几种",
                     "A.中国人民政治协商会议中国共产党召集的协商座谈会共同 参加国家政权" ,
                     "B.全国人民代表大会:中国人民政治协商会议共同参加国家政权" ,
@@ -67,7 +67,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
-    private Examination[] questons2=new Examination[]{
+    private Examination[] questions2=new Examination[]{
             new Examination("1、“三个代表”重要思想的精髓是（ ）。",
                     "A、解放思想，实事求是，与时俱进" ,
                     "B、解放思想，实事求是" ,
@@ -106,7 +106,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
-    private Examination[] questons3=new Examination[]{
+    private Examination[] questions3=new Examination[]{
             new Examination("1.2020年5月22日，十三届全国人大三次会议开幕，李克强向大会作政府工作报告。报告在回顾2019年和今年以来工作时指出，国内生产总值达到99.1万亿元，增长________。城镇新增就业1352万人，调查失业率在________以下。",
                     "A.6.1%  5.3%" ,
                     "B.6.1%  3.5%" ,
@@ -145,7 +145,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
-    private Examination[] questons4=new Examination[]{
+    private Examination[] questions4=new Examination[]{
             new Examination("1.2020年3月22日，在今日举行的国务院联防联控机制新闻发布会上表示，农业农村部将在全国范围展开农资打假“_____”行动。",
                     "A.春雷" ,
                     "B.夏雷" ,
@@ -184,7 +184,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
-    private Examination[] questons5=new Examination[]{
+    private Examination[] questions5=new Examination[]{
             new Examination("1.2020年3月8日引发的《美丽中国建设评估指标体系及实施方案》指出，将由第三方机构(中国科学院)对全国及31个省、自治区、直辖市开展美丽中国建设进程评估。以2020年为基年，以______年为周期开展____次评估。",
                     "A.5;2" ,
                     "B.5;1" ,
@@ -223,7 +223,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
-    private Examination[] questons6=new Examination[]{
+    private Examination[] questions6=new Examination[]{
             new Examination("1.2020年5月22日，十三届全国人大三次会议开幕，李克强向大会作政府工作报告。报告指出，做好今年政府工作，要坚决贯彻党的基本理论、基本路线、基本方略，增强“四个意识”、坚定________、做到“两个维护”，紧扣________目标任务，统筹推进疫情防控和经济社会发展工作。",
                     "A.“四个自信”　全面建成小康社会" ,
                     "B.“四个自信”　全面打赢脱贫攻坚战" ,
@@ -259,67 +259,9 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                     "B.企业",
                     "C.实体经济",
                     "D.经济实体","C")
-
     };
 
-    private String[] explain={
-            "解析 1:选A",
-            "解析 2:选D",
-            "解析 3:选B",
-            "解析 4:选B",
-            "解析 5:选A",
-            "解析 6:选C",
-            "解析 7:选C",
-    };
-    private String[] explain2={
-            "解析 1:选A",
-            "解析 2:选D",
-            "解析 3:选B",
-            "解析 4:选B",
-            "解析 5:选A",
-            "解析 6:选C",
-            "解析 7:选C",
-    };
 
-    private String[] explain3={
-            "解析 1:选A",
-            "解析 2:选D",
-            "解析 3:选B",
-            "解析 4:选B",
-            "解析 5:选A",
-            "解析 6:选C",
-            "解析 7:选C",
-    };
-
-    private String[] explain4={
-            "解析 1:选A",
-            "解析 2:选D",
-            "解析 3:选B",
-            "解析 4:选B",
-            "解析 5:选A",
-            "解析 6:选C",
-            "解析 7:选C",
-    };
-
-    private String[] explain5={
-            "解析 1:选A",
-            "解析 2:选D",
-            "解析 3:选B",
-            "解析 4:选B",
-            "解析 5:选A",
-            "解析 6:选C",
-            "解析 7:选C",
-    };
-
-    private String[] explain6={
-            "解析 1:选A",
-            "解析 2:选D",
-            "解析 3:选B",
-            "解析 4:选B",
-            "解析 5:选A",
-            "解析 6:选C",
-            "解析 7:选C",
-    };
     private int currentIndex=0;
     private boolean flag;
     private boolean[] flagArr;
@@ -342,10 +284,11 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d(KET_INDEX,"onSaveInstanceState");
+        //Log.d(KET_INDEX,"onSaveInstanceState");
         outState.putInt(KET_INDEX,currentIndex);
     }
 
+    //做题
     private void initView(){
         tvExit=(TextView)findViewById(R.id.tv_exam_exit);
         tvExit.setOnClickListener(this);
@@ -359,10 +302,10 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         rbOption3 = (RadioButton) findViewById(R.id.rb_exam_choose3);
         rbOption4 = (RadioButton) findViewById(R.id.rb_exam_choose4);
 
-        answer=questons[currentIndex].getAnswer();
-        flagArr=new boolean[questons.length];
+        answer=questions[currentIndex].getAnswer();
+        flagArr=new boolean[questions.length];
         rgOption.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-            @Override
+            @Override  //对RadioGroup的监听
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.rb_exam_choose1:
@@ -399,9 +342,11 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         tvAnswer.setText(answer);
     }
 
+    ////处理按键
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //处理退出键
             case R.id.tv_exam_exit:
                 if(tvAnswer.getVisibility()== View.GONE){
                     AlertDialog.Builder dialog = new AlertDialog.Builder(this)
@@ -422,12 +367,13 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                     finish();
                 }
                 break;
+                //点击题目实现跳转
             case R.id.tv_exam_question1:
                 flagArr[currentIndex]=flag;
-                Log.e("ExamActivity",flagArr[currentIndex]+"");
-                if(currentIndex==questons.length-1){
+               // Log.e("ExamActivity",flagArr[currentIndex]+"");
+                if(currentIndex==questions.length-1){
                     Intent intent=new Intent(ExamActivity.this, TestResultActivity.class);
-                    intent.putExtra("totalNum",questons.length);
+                    intent.putExtra("totalNum",questions.length);
                     intent.putExtra("flag",flagArr);
                     startActivityForResult(intent,REQUEST_CODE_RESULT);
                 }else{
@@ -437,24 +383,24 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_exam_next:
                 flagArr[currentIndex]=flag;
-                Log.e("ExamActivity", flagArr[currentIndex] + "num" + currentIndex);
-                if(currentIndex==questons.length-1){
+                //Log.e("ExamActivity", flagArr[currentIndex] + "num" + currentIndex);
+                if(currentIndex==questions.length-1){
                     Intent intent = new Intent(ExamActivity.this, TestResultActivity.class);
-                    intent.putExtra("totalNum",questons.length);
+                    intent.putExtra("totalNum",questions.length);
                     intent.putExtra("flag", flagArr);
                     startActivityForResult(intent, REQUEST_CODE_RESULT);
             }else{
                     currentIndex++;
-                    answer = questons[currentIndex].getAnswer();
+                    answer = questions[currentIndex].getAnswer();
                     updateQuestion();
                 }
                 break;
             case R.id.tv_exam_previous:
                 flagArr[currentIndex] = flag;
-                Log.e("ExamActivity", flagArr[currentIndex] + "");
+                //Log.e("ExamActivity", flagArr[currentIndex] + "");
 
                 currentIndex--;
-                answer = questons[currentIndex].getAnswer();
+                answer = questions[currentIndex].getAnswer();
 
                 updateQuestion();
                 break;
@@ -462,12 +408,8 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
     private void updateQuestion(){
-//        if(testId==1){
-//            updateQuestion1();
-//        }else{
-//            updateQuestion2();
-//        }
         switch(testId){
             case 1:
                 updateQuestion1();
@@ -489,23 +431,24 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
     private void updateQuestion1(){
-        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
-        String question=questons[currentIndex].getQuestion();
+        //Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
+        String question=questions[currentIndex].getQuestion();
         tvQue.setText(question);
-        String option1=questons[currentIndex].getOption1();
+        String option1=questions[currentIndex].getOption1();
         rbOptionl.setText(option1);
-        String option2 =questons[currentIndex].getOption2();
+        String option2 =questions[currentIndex].getOption2();
         rbOption2.setText(option2);
-        String option3 = questons[currentIndex].getOption3();
+        String option3 = questions[currentIndex].getOption3();
         rbOption3.setText(option3);
-        String option4 = questons[currentIndex].getOption4();
+        String option4 = questions[currentIndex].getOption4();
         rbOption4.setText(option4);
 
         rgOption.clearCheck();
         flag=false;
         tvAnswer.setVisibility(View.GONE);
-        tvAnswer.setText("答案："+questons[currentIndex].getAnswer()+explain[currentIndex]);
+        //tvAnswer.setText("答案："+questions[currentIndex].getAnswer()+explain[currentIndex]);
 
         if(currentIndex==0){
             tvPre.setText("没有前一题");
@@ -515,29 +458,29 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             tvPre.setEnabled(true);
         }
 
-        if(currentIndex==questons.length-1){
+        if(currentIndex==questions.length-1){
             tvNext.setText("完成测试");
         }
         tvNext.setText("下一个");
     }
 
     private void updateQuestion2(){
-        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
-        String question=questons2[currentIndex].getQuestion();
+//        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
+        String question=questions2[currentIndex].getQuestion();
         tvQue.setText(question);
-        String option1=questons2[currentIndex].getOption1();
+        String option1=questions2[currentIndex].getOption1();
         rbOptionl.setText(option1);
-        String option2 =questons2[currentIndex].getOption2();
+        String option2 =questions2[currentIndex].getOption2();
         rbOption2.setText(option2);
-        String option3 = questons2[currentIndex].getOption3();
+        String option3 = questions2[currentIndex].getOption3();
         rbOption3.setText(option3);
-        String option4 = questons2[currentIndex].getOption4();
+        String option4 = questions2[currentIndex].getOption4();
         rbOption4.setText(option4);
 
         rgOption.clearCheck();
         flag=false;
         tvAnswer.setVisibility(View.GONE);
-        tvAnswer.setText("答案："+questons2[currentIndex].getAnswer()+explain2[currentIndex]);
+        //tvAnswer.setText("答案："+questions2[currentIndex].getAnswer()+explain2[currentIndex]);
 
         if(currentIndex==0){
             tvPre.setText("没有前一题");
@@ -547,29 +490,29 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             tvPre.setEnabled(true);
         }
 
-        if(currentIndex==questons2.length-1){
+        if(currentIndex==questions2.length-1){
             tvNext.setText("完成测试");
         }
         tvNext.setText("下一个");
     }
 
     private void updateQuestion3(){
-        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
-        String question=questons3[currentIndex].getQuestion();
+//        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
+        String question=questions3[currentIndex].getQuestion();
         tvQue.setText(question);
-        String option1=questons3[currentIndex].getOption1();
+        String option1=questions3[currentIndex].getOption1();
         rbOptionl.setText(option1);
-        String option2 =questons3[currentIndex].getOption2();
+        String option2 =questions3[currentIndex].getOption2();
         rbOption2.setText(option2);
-        String option3 = questons3[currentIndex].getOption3();
+        String option3 = questions3[currentIndex].getOption3();
         rbOption3.setText(option3);
-        String option4 = questons3[currentIndex].getOption4();
+        String option4 = questions3[currentIndex].getOption4();
         rbOption4.setText(option4);
 
         rgOption.clearCheck();
         flag=false;
         tvAnswer.setVisibility(View.GONE);
-        tvAnswer.setText("答案："+questons3[currentIndex].getAnswer()+explain3[currentIndex]);
+        //tvAnswer.setText("答案："+questions3[currentIndex].getAnswer()+explain3[currentIndex]);
 
         if(currentIndex==0){
             tvPre.setText("没有前一题");
@@ -579,29 +522,29 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             tvPre.setEnabled(true);
         }
 
-        if(currentIndex==questons3.length-1){
+        if(currentIndex==questions3.length-1){
             tvNext.setText("完成测试");
         }
         tvNext.setText("下一个");
     }
 
     private void updateQuestion4(){
-        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
-        String question=questons4[currentIndex].getQuestion();
+//        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
+        String question=questions4[currentIndex].getQuestion();
         tvQue.setText(question);
-        String option1=questons4[currentIndex].getOption1();
+        String option1=questions4[currentIndex].getOption1();
         rbOptionl.setText(option1);
-        String option2 =questons4[currentIndex].getOption2();
+        String option2 =questions4[currentIndex].getOption2();
         rbOption2.setText(option2);
-        String option3 = questons4[currentIndex].getOption3();
+        String option3 = questions4[currentIndex].getOption3();
         rbOption3.setText(option3);
-        String option4 = questons4[currentIndex].getOption4();
+        String option4 = questions4[currentIndex].getOption4();
         rbOption4.setText(option4);
 
         rgOption.clearCheck();
         flag=false;
         tvAnswer.setVisibility(View.GONE);
-        tvAnswer.setText("答案："+questons4[currentIndex].getAnswer()+explain4[currentIndex]);
+       // tvAnswer.setText("答案："+questions4[currentIndex].getAnswer()+explain4[currentIndex]);
 
         if(currentIndex==0){
             tvPre.setText("没有前一题");
@@ -611,29 +554,29 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             tvPre.setEnabled(true);
         }
 
-        if(currentIndex==questons4.length-1){
+        if(currentIndex==questions4.length-1){
             tvNext.setText("完成测试");
         }
         tvNext.setText("下一个");
     }
 
     private void updateQuestion5(){
-        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
-        String question=questons5[currentIndex].getQuestion();
+//        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
+        String question=questions5[currentIndex].getQuestion();
         tvQue.setText(question);
-        String option1=questons5[currentIndex].getOption1();
+        String option1=questions5[currentIndex].getOption1();
         rbOptionl.setText(option1);
-        String option2 =questons5[currentIndex].getOption2();
+        String option2 =questions5[currentIndex].getOption2();
         rbOption2.setText(option2);
-        String option3 = questons5[currentIndex].getOption3();
+        String option3 = questions5[currentIndex].getOption3();
         rbOption3.setText(option3);
-        String option4 = questons5[currentIndex].getOption4();
+        String option4 = questions5[currentIndex].getOption4();
         rbOption4.setText(option4);
 
         rgOption.clearCheck();
         flag=false;
         tvAnswer.setVisibility(View.GONE);
-        tvAnswer.setText("答案："+questons5[currentIndex].getAnswer()+explain5[currentIndex]);
+       // tvAnswer.setText("答案："+questions5[currentIndex].getAnswer()+explain5[currentIndex]);
 
         if(currentIndex==0){
             tvPre.setText("没有前一题");
@@ -643,29 +586,29 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             tvPre.setEnabled(true);
         }
 
-        if(currentIndex==questons5.length-1){
+        if(currentIndex==questions5.length-1){
             tvNext.setText("完成测试");
         }
         tvNext.setText("下一个");
     }
 
     private void updateQuestion6(){
-        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
-        String question=questons6[currentIndex].getQuestion();
+//        Log.d(TAG, "Updating question text for question and option#" + currentIndex, new Exception());
+        String question=questions6[currentIndex].getQuestion();
         tvQue.setText(question);
-        String option1=questons6[currentIndex].getOption1();
+        String option1=questions6[currentIndex].getOption1();
         rbOptionl.setText(option1);
-        String option2 =questons6[currentIndex].getOption2();
+        String option2 =questions6[currentIndex].getOption2();
         rbOption2.setText(option2);
-        String option3 = questons6[currentIndex].getOption3();
+        String option3 = questions6[currentIndex].getOption3();
         rbOption3.setText(option3);
-        String option4 = questons6[currentIndex].getOption4();
+        String option4 = questions6[currentIndex].getOption4();
         rbOption4.setText(option4);
 
         rgOption.clearCheck();
         flag=false;
         tvAnswer.setVisibility(View.GONE);
-        tvAnswer.setText("答案："+questons6[currentIndex].getAnswer()+explain6[currentIndex]);
+        //tvAnswer.setText("答案："+questions6[currentIndex].getAnswer()+explain6[currentIndex]);
 
         if(currentIndex==0){
             tvPre.setText("没有前一题");
@@ -675,54 +618,10 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             tvPre.setEnabled(true);
         }
 
-        if(currentIndex==questons6.length-1){
+        if(currentIndex==questions6.length-1){
             tvNext.setText("完成测试");
         }
         tvNext.setText("下一个");
     }
 
-
-
-
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RESULT_OK){
-            currentIndex = data.getIntExtra("position", 0);
-            answer = questons[currentIndex].getAnswer();
-            updateQuestion();
-        }
-        if (requestCode == REQUEST_CODE_RESULT) {
-            tvAnswer.setVisibility(View.VISIBLE);
-            tvExit.setText("返回");
-            tvNext.setVisibility(View.GONE);
-            tvPre.setVisibility(View.GONE);
-
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (tvAnswer.getVisibility() == View.GONE) {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this)
-                    .setTitle("确定要退出测试吗")
-                    .setPositiveButton("确定退出", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    }).setNegativeButton("继续测试", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            dialog.create().show();
-        } else {
-            finish();
-        }
-    }
 }

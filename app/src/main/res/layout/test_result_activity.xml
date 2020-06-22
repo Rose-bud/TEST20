@@ -73,6 +73,6 @@
         android:elevation="2dp"
         android:textColor="@color/c_EC9C34"
         android:textSize="18dp"
-        tools:text="正确5个，错误2个，还不错，继续努力。" />
+        tools:text="正确率为71.43%，还不错，继续努力。" />
 
 </LinearLayout>

@@ -23,8 +23,8 @@ public class TestResultActivity extends AppCompatActivity {
     private TextView tvRight,tvWrong;
     private TextView tvSummary;
     private boolean[] flagSelected;
-    private Button btnSubmitAccurate;
-    private EditText etKey;
+
+  //  private EditText etKey;
     int listNum=1;
     int right=0;
     int wrong=0;
@@ -49,7 +49,7 @@ public class TestResultActivity extends AppCompatActivity {
             }else{
                 wrong++;
             }
-            Log.e("ResultActivity -- flag", flagSelected[i] + "");
+           // Log.e("ResultActivity -- flag", flagSelected[i] + "");
         }
         tvRight=(TextView)findViewById(R.id.tv_result_right);
         tvWrong=(TextView)findViewById(R.id.tv_result_wrong);
@@ -69,7 +69,8 @@ public class TestResultActivity extends AppCompatActivity {
         }
         rvResultList=(RecyclerView)findViewById(R.id.rv_result_list);
         tvBack=(TextView)findViewById(R.id.tv_result_back);
-        ///////
+
+        ///////从测试结果界面跳转回主页
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +79,7 @@ public class TestResultActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ///////
+        ///////结果回顾
         RecyclerView.LayoutManager manager = new GridLayoutManager(this, 5);
         rvResultList.setLayoutManager(manager);
 
