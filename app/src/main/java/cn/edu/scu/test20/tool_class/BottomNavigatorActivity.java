@@ -51,7 +51,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
     private MyViewPageAdapter viewPageAdapter;
     private View.OnClickListener clickListener;
     private ViewPager.OnPageChangeListener pageChangeListener;
-    private DrawerLayout mDrawerLayout;
     private LinearLayout homepageLayout, questionBankLayout, videoLayout, infoLayout;
     //使用相册中的图片
     public static final int SELECT_PIC_CODE = 1;
@@ -72,40 +71,8 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         mUri = Uri.fromFile(mFile);
         Bmob.initialize(this, "56a832cf0b1a430d9eada88f2c39a39a");//绑定后端
     }
-//    public boolean onCreateOptionsMenu(Menu menu){
-//        getMenuInflater().inflate(R.menu.toolbar,menu);
-//        return true;
-//    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-//            case R.id.settings:
-//                Toast.makeText(this,"Settings", Toast.LENGTH_SHORT).show();
-//                break;
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                break;
-            default:
-
-        }
-        return true;
-    }
-
 
     private void initView(Bundle savedInstanceState){
-        mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
-
-
-
-        NavigationView navView=(NavigationView)findViewById(R.id.nav_view);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mDrawerLayout.closeDrawers();
-                return true;
-            }
-        });
-
 
         manager= new LocalActivityManager(this,true);
         manager.dispatchCreate(savedInstanceState);
@@ -180,7 +147,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
                         img4.setImageResource(R.drawable.tab05_my);
                         break;
                 }
-
             }
 
             @Override
@@ -206,8 +172,6 @@ public class BottomNavigatorActivity extends AppCompatActivity {
         //change by sc,6/19
         intent.setClass(this, MainActivity3.class);
         intent.putExtra("id",2);
-//        intent.putExtra("name",getIntent().getStringExtra("name"));
-//        intent.putExtra("student",utype);
         mViews.add(getView("QualityActivity2",intent));
 
         intent.setClass(this, LittleVideoActivity.class);
